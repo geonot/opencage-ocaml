@@ -1,4 +1,4 @@
-# OCaml-OpenCage
+# OpenCage SDK for OCaml
 
 [![Build Status](https://github.com/geonot/opencage-ocaml/actions/workflows/ci.yml/badge.svg)](https://github.com/geonot/opencage-ocaml/actions/workflows/ci.yml)
 
