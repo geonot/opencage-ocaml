@@ -15,9 +15,12 @@ jobs:
           ocaml-compiler: 5.1.1
       - name: Install dependencies
         run: |
+          eval $(opam env)
           opam update -y
-          opam install . --deps-only -y
-          opam install tls-lwt lwt_ssl -y
+          opam depext -y --with-test . || true
+          opam install . --deps-only --with-test -y
+          # Ensure TLS backends are present (some distros miss these via transitive deps)
+          opam install -y tls-lwt lwt_ssl
       - name: Build
         run: |
           eval $(opam env)
