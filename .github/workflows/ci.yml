@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: |
           eval $(opam env)
-          dune build -p opencage-ocaml
+          dune build -p opencage
       - name: Test
         run: |
           eval $(opam env)

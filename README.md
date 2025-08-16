@@ -8,10 +8,10 @@ This library provides a simple and easy-to-use interface for the OpenCage API, a
 
 ## Installation
 
-The recommended way to install `opencage-ocaml` is via the [opam](https://opam.ocaml.org) package manager:
+The recommended way to install `opencage` is via the [opam](https://opam.ocaml.org) package manager:
 
 ```bash
-opam install opencage-ocaml
+opam install opencage
 ```
 
 ## Prerequisites

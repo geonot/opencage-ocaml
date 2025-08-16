@@ -1,6 +1,6 @@
 (test
  (name test)
-(libraries opencage-ocaml alcotest-lwt lwt.unix conduit-lwt-unix tls)
+(libraries opencage alcotest-lwt lwt.unix conduit-lwt-unix tls)
  (preprocess (pps lwt_ppx))
 )
 

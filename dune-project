@@ -1,5 +1,5 @@
 (lang dune 3.17)
-(name opencage-ocaml)
+(name opencage)
 (generate_opam_files true)
 (source (github geonot/opencage-ocaml))
 (authors "Rome Stone <fractalattice@gmail.com>")
@@ -8,7 +8,7 @@
 (documentation https://geonot.github.io/opencage-ocaml)
 
 (package
- (name opencage-ocaml)
+ (name opencage)
  (synopsis "OCaml bindings for the OpenCage Geocoding API")
  (description "A complete OCaml library for the OpenCage Geocoding API.")
 (depends ocaml

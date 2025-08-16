@@ -4,7 +4,7 @@ let () =
   Lwt_main.run (
     let command =
       if Array.length Sys.argv < 2 then (
-        prerr_endline "Usage: opencage-ocaml-example <forward|reverse> [query|lat,lon]";
+  prerr_endline "Usage: opencage-example <forward|reverse> [query|lat,lon]";
         exit 1)
       else Sys.argv.(1)
     in

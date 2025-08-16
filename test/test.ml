@@ -61,7 +61,7 @@ let test_402_payment_required _ () =
 let () =
   let open Alcotest_lwt in
   Lwt_main.run (
-    run "opencage-ocaml" [
+  run "opencage" [
       "geocoding", [
         test_case "Successful forward geocoding" `Quick test_successful_forward;
         test_case "Successful reverse geocoding" `Quick test_successful_reverse;

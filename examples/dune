@@ -1,5 +1,5 @@
 (executables
  (names forward reverse no_results params)
  (public_names oc-opencage-forward oc-opencage-reverse oc-opencage-no-results oc-opencage-params)
- (libraries opencage-ocaml lwt yojson)
+ (libraries opencage lwt yojson)
  (preprocess (pps lwt_ppx)))

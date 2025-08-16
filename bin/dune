@@ -1,6 +1,6 @@
 (executable
  (name main)
- (public_name opencage-ocaml-example)
-(libraries opencage-ocaml lwt conduit-lwt-unix tls)
+ (public_name opencage-example)
+(libraries opencage lwt conduit-lwt-unix tls)
  (preprocess (pps lwt_ppx))
 )
