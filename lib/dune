@@ -1,0 +1,6 @@
+(library
+ (name opencage)
+ (public_name opencage-ocaml)
+(libraries cohttp-lwt-unix yojson lwt conduit-lwt-unix tls)
+ (preprocess (pps lwt_ppx))
+)

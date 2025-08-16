@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5.1.1
+      - name: Install dependencies
+        run: |
+          opam update -y
+          opam install . --deps-only -y
+          opam install tls-lwt lwt_ssl -y
+      - name: Build
+        run: |
+          eval $(opam env)
+          dune build -p opencage-ocaml
+      - name: Test
+        run: |
+          eval $(opam env)
+          dune runtest -j1 --no-buffer

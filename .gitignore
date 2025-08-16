@@ -1,0 +1,19 @@
+# OCaml and Dune build artifacts
+_build
+*.cmi
+*.cmo
+*.cmx
+*.o
+*.a
+*.so
+*.cmxs
+*.install
+
+# Opam local switches
+_opam
+
+# Merlin configuration file
+.merlin
+
+# Dune generated files
+*.opam
