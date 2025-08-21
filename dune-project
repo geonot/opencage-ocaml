@@ -14,7 +14,7 @@
  (depends
   (ocaml (>= 4.08.0))
   cohttp-lwt-unix
-  yojson
+    (yojson (>= 2.0.0))
   lwt
   conduit-lwt-unix
   tls

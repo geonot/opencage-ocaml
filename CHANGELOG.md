@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) principles (dates in UTC).
 
+## [1.0.3] - 2025-08-21
+### Fixed
+- Add minimum `yojson >= 2.0.0` constraint to ensure `Yojson.Safe.t` type constructor is present under older compiler / lower-bound resolution. (opam CI 4.08 lower-bounds previously downgraded yojson to 1.5.0 causing build failure.)
+
 ## [1.0.2] - 2025-08-21
 ### Changed
 - Gate network-dependent tests behind `OPENCAGE_RUN_NETWORK_TESTS=1` (default disabled) so opam-repository CI (which disallows external network/DNS in some sandboxes or older compilers) can build the package successfully. Provides a fast offline placeholder test when disabled.
@@ -31,4 +35,5 @@ All notable changes to this project will be documented in this file. This projec
 ---
 
 [1.0.2]: https://github.com/geonot/opencage-ocaml/compare/1.0.1...1.0.2
+[1.0.3]: https://github.com/geonot/opencage-ocaml/compare/1.0.2...1.0.3
 [1.0.1]: https://github.com/geonot/opencage-ocaml/compare/1.0.0...1.0.1
