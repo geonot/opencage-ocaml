@@ -12,14 +12,13 @@
  (synopsis "OCaml bindings for the OpenCage Geocoding API")
  (description "A complete OCaml library for the OpenCage Geocoding API.")
  (depends
-  ocaml
+  (ocaml (>= 4.08.0))
   cohttp-lwt-unix
   yojson
   lwt
   conduit-lwt-unix
   tls
   tls-lwt
-  lwt_ssl
   lwt_ppx
   (alcotest :with-test)
   (alcotest-lwt :with-test))

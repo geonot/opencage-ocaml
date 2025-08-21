@@ -111,6 +111,11 @@ Testing notes:
 
 - OpenCage provides [testing API keys](https://opencagedata.com/api#testingkeys) that deterministically return specific responses. Our test suite uses these keys, and you can also use them for local testing.
 - To simulate a valid request with no results, use the query `NOWHERE-INTERESTING` which will return `200` with `total_results = 0`.
+- By default, the published test executable skips real network calls (for opam-repository CI). Set `OPENCAGE_RUN_NETWORK_TESTS=1` to run the live HTTP tests locally:
+
+```bash
+OPENCAGE_RUN_NETWORK_TESTS=1 dune runtest
+```
 
 ## Examples
 
