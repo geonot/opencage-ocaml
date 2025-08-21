@@ -19,7 +19,6 @@
   conduit-lwt-unix
   tls
   tls-lwt
-  lwt_ppx
   (alcotest :with-test)
   (alcotest-lwt :with-test))
  (tags ("geocoding" "opencage" "api" "bindings" "lwt"))

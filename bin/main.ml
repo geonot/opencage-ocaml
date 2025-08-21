@@ -1,4 +1,4 @@
-open Lwt.Syntax
+open Lwt.Infix
 
 let () =
   Lwt_main.run (
@@ -14,14 +14,13 @@ let () =
       if query = "" then (
         prerr_endline "Missing query for forward geocoding.";
         exit 1);
-      let* result = Opencage.geocode query in
-      match result with
-      | Ok json ->
-          print_endline (Yojson.Safe.pretty_to_string json);
-          Lwt.return_unit
-      | Error (`Msg msg) ->
-          prerr_endline msg;
-          Lwt.return_unit
+    Opencage.geocode query >>= function
+    | Ok json ->
+      print_endline (Yojson.Safe.pretty_to_string json);
+      Lwt.return_unit
+    | Error (`Msg msg) ->
+      prerr_endline msg;
+      Lwt.return_unit
     in
 
     let run_reverse_geocode () =
@@ -31,14 +30,13 @@ let () =
         exit 1);
       try
         let lat, lon = Scanf.sscanf lat_lon_str "%f,%f" (fun lat lon -> (lat, lon)) in
-        let* result = Opencage.reverse_geocode lat lon in
-        match result with
-        | Ok json ->
-            print_endline (Yojson.Safe.pretty_to_string json);
-            Lwt.return_unit
-        | Error (`Msg msg) ->
-            prerr_endline msg;
-            Lwt.return_unit
+    Opencage.reverse_geocode lat lon >>= function
+    | Ok json ->
+      print_endline (Yojson.Safe.pretty_to_string json);
+      Lwt.return_unit
+    | Error (`Msg msg) ->
+      prerr_endline msg;
+      Lwt.return_unit
       with Scanf.Scan_failure _ | End_of_file ->
         prerr_endline "Invalid lat,lon format. Expected: <lat>,<lon>";
         exit 1
