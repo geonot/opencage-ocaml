@@ -3,7 +3,8 @@ open Lwt.Infix
 open Cohttp_lwt_unix
 
 let base_uri = Uri.of_string "https://api.opencagedata.com/geocode/v1/json"
-let version = "0.1.0"
+(* The version string is substituted during release by [dune subst]. *)
+let version = "%%VERSION%%"
 
 let get_api_key () :
     (string, [> `Msg of string ]) result Lwt.t = 

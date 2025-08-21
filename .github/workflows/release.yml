@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag (e.g. 1.0.1)"
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5.1.1
+      - name: Validate clean tree
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then echo "Working tree not clean"; exit 1; fi
+      - name: Set version
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          echo "Preparing release $VERSION"
+          # Update changelog placeholder date if present
+          sed -i "0,/UNRELEASED/{s/UNRELEASED/$(date -u +%Y-%m-%d)/}" CHANGELOG.md
+          git add CHANGELOG.md || true
+      - name: Build & test (with substitution)
+        run: |
+          opam update -y
+          opam install . --deps-only --with-test -y
+          dune build -p opencage @runtest
+      - name: Tag
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          git commit -m "chore: prepare $VERSION" || echo "No changes to commit"
+          git tag -a "$VERSION" -m "$VERSION"
+          git push origin "$VERSION"
+      - name: Opam lint
+        run: |
+          opam lint opencage.opam
