@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) principles (dates in UTC).
 
+## [1.0.5] - 2025-08-21
+### Fixed
+- Remove leftover `lwt_ppx` preprocessor from test stanza (no longer needed after 1.0.4 syntax refactor) to fix opam-repository CI test failures complaining "Library \"lwt_ppx\" not found." Tests now build without PPX.
+
 ## [1.0.4] - 2025-08-21
 ### Fixed
 - Remove usage of `Lwt.Syntax` (and drop `lwt_ppx` dependency) in executables, examples and tests to allow build with older `lwt` versions selected by opam-repository lower-bounds (e.g. 4.2.0) and avoid `Unbound module Lwt.Syntax` errors during CI.
@@ -42,4 +46,5 @@ All notable changes to this project will be documented in this file. This projec
 [1.0.2]: https://github.com/geonot/opencage-ocaml/compare/1.0.1...1.0.2
 [1.0.3]: https://github.com/geonot/opencage-ocaml/compare/1.0.2...1.0.3
 [1.0.4]: https://github.com/geonot/opencage-ocaml/compare/1.0.3...1.0.4
+[1.0.5]: https://github.com/geonot/opencage-ocaml/compare/1.0.4...1.0.5
 [1.0.1]: https://github.com/geonot/opencage-ocaml/compare/1.0.0...1.0.1
