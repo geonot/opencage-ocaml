@@ -2,13 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) principles (dates in UTC).
 
-## [1.0.1] - 2025-08-21
-## [Unreleased]
+## [1.0.2] - 2025-08-21
 ### Changed
 - Gate network-dependent tests behind `OPENCAGE_RUN_NETWORK_TESTS=1` (default disabled) so opam-repository CI (which disallows external network/DNS in some sandboxes or older compilers) can build the package successfully. Provides a fast offline placeholder test when disabled.
 
-### Planned
-- Remove `lwt_ssl` dependency (TLS is already covered by `tls` / `conduit`) to ease Windows support unless a concrete need emerges.
+### Removed
+- Drop `lwt_ssl` dependency (TLS handled by `tls` / `conduit*` stack) to simplify dependency graph and future Windows support.
+
+## [1.0.1] - 2025-08-21
 
 ### Fixed
 - Packaging: ensure `public_name` and opam package name are both `opencage`.
@@ -29,4 +30,5 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+[1.0.2]: https://github.com/geonot/opencage-ocaml/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/geonot/opencage-ocaml/compare/1.0.0...1.0.1
