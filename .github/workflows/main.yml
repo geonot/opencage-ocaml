@@ -12,18 +12,28 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up OCaml
-      uses: ocaml/setup-ocaml@v2
+      uses: ocaml/setup-ocaml@v3
       with:
-        ocaml-compiler: 4.14.x
+        ocaml-compiler: 5.1.1
 
     - name: Install dependencies
-      run: opam install . --deps-only --with-test
+      run: |
+        eval $(opam env)
+        opam update -y
+        opam depext -y --with-test . || true
+        opam install . --deps-only --with-test -y
+        # Ensure TLS backends are present (some distros miss these via transitive deps)
+        opam install -y tls-lwt
 
     - name: Build
-      run: dune build
+      run: |
+        eval $(opam env)
+        dune build -p opencage
 
     - name: Run tests
-      run: dune runtest
+      run: |
+        eval $(opam env)
+        dune runtest -j1 --no-buffer
