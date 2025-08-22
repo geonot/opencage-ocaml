@@ -20,7 +20,7 @@ jobs:
           opam depext -y --with-test . || true
           opam install . --deps-only --with-test -y
           # Ensure TLS backends are present (some distros miss these via transitive deps)
-          opam install -y tls-lwt lwt_ssl
+          opam install -y tls-lwt
       - name: Build
         run: |
           eval $(opam env)

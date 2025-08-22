@@ -1,4 +1,4 @@
-(lang dune 3.17)
+(lang dune 3.0)
 (name opencage)
 (generate_opam_files true)
 (source (github geonot/opencage-ocaml))
